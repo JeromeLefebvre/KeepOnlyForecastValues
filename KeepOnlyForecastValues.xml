@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AF xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="OSIsoft.AF.xsd" SchemaVersion="2.0" SoftwareVersion="2.7.5.7166" ExportMode="AllReferences, NoUniqueID" PISystem="JLEFEBVRENEW" Database="KeepOnlyForecastValues" Description="" Created="2016-03-16T07:28:10.9641268Z" id="0d072d84-f235-45fe-b94c-51bbfd804c8e" ParentKey="0c8bd695-2962-48f1-8ade-c769ea78521b" ExportedObject="KeepOnlyForecastValues" ExportedType="AFDatabase" Identity="Database" PIPersist="158 {9895150E-085D-4fcb-A16D-5EF5D2527196} 2\{0c8bd695-2962-48f1-8ade-c769ea78521b}\{0d072d84-f235-45fe-b94c-51bbfd804c8e}*JLEFEBVRENEW\KeepOnlyForecastValues">
+  <AFDatabase>
+    <Name>KeepOnlyForecastValues</Name>
+    <AFElementTemplate>
+      <Name>DataGenerationTemplate</Name>
+      <Type>None</Type>
+      <InstanceType>Element</InstanceType>
+      <AllowElementToExtend>false</AllowElementToExtend>
+      <AFAttributeTemplate>
+        <Name>Forecast</Name>
+        <Type>Single</Type>
+        <Value type="Single">0</Value>
+        <DataReference>PI Point</DataReference>
+        <ConfigString>\\jlefebvrenew?e0e3d8a6-0a4f-44e0-9b8f-02a6160c8aa6\OSIDemo_Forecast;pointtype=Float64;future=1</ConfigString>
+      </AFAttributeTemplate>
+      <AFAnalysisTemplate>
+        <Name>FutureSinusoid</Name>
+        <OutputTime>*+2m</OutputTime>
+        <Target>DataGenerationTemplate</Target>
+        <AFAnalysisRule>
+          <AFPlugIn>PerformanceEquation</AFPlugIn>
+          <ConfigString>Sin(Second('*'))</ConfigString>
+          <VariableMapping>Output||FutureSinusoid;</VariableMapping>
+        </AFAnalysisRule>
+        <AFTimeRule>
+          <AFPlugIn>Periodic</AFPlugIn>
+          <ConfigString>Frequency=1</ConfigString>
+        </AFTimeRule>
+      </AFAnalysisTemplate>
+    </AFElementTemplate>
+    <AFElement>
+      <Name>DataGeneration</Name>
+      <Template>DataGenerationTemplate</Template>
+      <AFAttribute>
+        <Name>Forecast</Name>
+      </AFAttribute>
+      <AFAnalysis>
+        <Name>FutureSinusoid</Name>
+        <Template>FutureSinusoid</Template>
+        <OutputTime>*+2m</OutputTime>
+        <Status>Error</Status>
+        <Target>
+          <AFElementRef>DataGeneration</AFElementRef>
+        </Target>
+        <AFTimeRule>
+          <AFPlugIn>Periodic</AFPlugIn>
+          <ConfigString>Frequency=1</ConfigString>
+        </AFTimeRule>
+      </AFAnalysis>
+    </AFElement>
+    <AFElement>
+      <Name>Forecast</Name>
+      <AFAttribute>
+        <Name>Forecast</Name>
+        <IsConfigurationItem>false</IsConfigurationItem>
+        <Type>Double</Type>
+        <DataReference>PI Point</DataReference>
+        <ConfigString>\\jlefebvrenew?e0e3d8a6-0a4f-44e0-9b8f-02a6160c8aa6\OSIDemo_Forecast</ConfigString>
+      </AFAttribute>
+    </AFElement>
+  </AFDatabase>
+</AF>
