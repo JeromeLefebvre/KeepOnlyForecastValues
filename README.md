@@ -9,3 +9,8 @@ How to use this example.
 5. By default it will write data 2 minutes in the future
 6. Run the program using Visual Studio 2015
 7. Once any event becomes older than current time, that event will be printed in the console and deleted from the archive.
+
+This sample code was only tested with the following:
+AFSDK 2015 R2, 2.7.5.7166
+Visual Studio 2015 Community
+.Net Framework 4.5.2
