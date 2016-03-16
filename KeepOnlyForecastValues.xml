@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<AF xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="OSIsoft.AF.xsd" SchemaVersion="2.0" SoftwareVersion="2.7.5.7166" ExportMode="AllReferences, NoUniqueID" PISystem="JLEFEBVRENEW" Database="KeepOnlyForecastValues" Description="" Created="2016-03-16T07:28:10.9641268Z" id="0d072d84-f235-45fe-b94c-51bbfd804c8e" ParentKey="0c8bd695-2962-48f1-8ade-c769ea78521b" ExportedObject="KeepOnlyForecastValues" ExportedType="AFDatabase" Identity="Database" PIPersist="158 {9895150E-085D-4fcb-A16D-5EF5D2527196} 2\{0c8bd695-2962-48f1-8ade-c769ea78521b}\{0d072d84-f235-45fe-b94c-51bbfd804c8e}*JLEFEBVRENEW\KeepOnlyForecastValues">
+<AF xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="OSIsoft.AF.xsd" SchemaVersion="2.0" SoftwareVersion="2.7.5.7166" ExportMode="AllReferences, NoUniqueID" PISystem="JLEFEBVRENEW" Database="KeepOnlyForecastValues" Description="" Created="2016-03-16T07:55:15.1843371Z" id="0d072d84-f235-45fe-b94c-51bbfd804c8e" ParentKey="0c8bd695-2962-48f1-8ade-c769ea78521b" ExportedObject="KeepOnlyForecastValues" ExportedType="AFDatabase" Identity="Database" PIPersist="158 {9895150E-085D-4fcb-A16D-5EF5D2527196} 2\{0c8bd695-2962-48f1-8ade-c769ea78521b}\{0d072d84-f235-45fe-b94c-51bbfd804c8e}*JLEFEBVRENEW\KeepOnlyForecastValues">
   <AFDatabase>
     <Name>KeepOnlyForecastValues</Name>
     <AFElementTemplate>
@@ -21,7 +21,7 @@
         <AFAnalysisRule>
           <AFPlugIn>PerformanceEquation</AFPlugIn>
           <ConfigString>Sin(Second('*'))</ConfigString>
-          <VariableMapping>Output||FutureSinusoid;</VariableMapping>
+          <VariableMapping>Output||Forecast;[GUID]||{7d51bc93-6e0b-4eb2-9e9a-c8d47c69801b};[GUID]||[UNSET];</VariableMapping>
         </AFAnalysisRule>
         <AFTimeRule>
           <AFPlugIn>Periodic</AFPlugIn>
@@ -38,8 +38,8 @@
       <AFAnalysis>
         <Name>FutureSinusoid</Name>
         <Template>FutureSinusoid</Template>
-        <OutputTime>*+2m</OutputTime>
-        <Status>Error</Status>
+        <OutputTime>*+30s</OutputTime>
+        <Status>Enabled</Status>
         <Target>
           <AFElementRef>DataGeneration</AFElementRef>
         </Target>

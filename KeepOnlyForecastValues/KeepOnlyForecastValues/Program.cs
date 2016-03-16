@@ -49,7 +49,7 @@ namespace KeepOnlyForecastValues
         static void Main(string[] args)
         {
             PISystem myPISystem = new PISystems()["localhost"];
-            AFElement myElement = AFObject.FindObject(@"\\localhost\KeepOnlyForecast\Forecast") as AFElement;
+            AFElement myElement = AFObject.FindObject(@"\\localhost\KeepOnlyForecastValues\Forecast") as AFElement;
 
             // Sign up for updates for attributes  
             using (AFDataPipe myDataPipe = new AFDataPipe())
